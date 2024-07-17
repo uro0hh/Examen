@@ -1,0 +1,8 @@
+*SUPER USUARIO*
+
+superuser: et
+email: hec.lopez@duocuc.cl
+password: hecigbar
+
+
+

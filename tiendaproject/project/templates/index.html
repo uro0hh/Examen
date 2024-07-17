@@ -1,0 +1,201 @@
+
+{% load bootstrap5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <title>Carrito de compras</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+        {% bootstrap_css %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+
+</head>
+
+<body>
+
+    <div class="row row-cols-1 row-cols-md-6 g-4">
+        {% for product in product %}
+        <div class="col">
+          <div class="card h-50">
+            <a href="{% url 'producto' product.pk %}">
+              {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+              {% else %}
+                <img src="{% static 'images/default_product_image.png' %}" class="card-img-top" alt="Default Image">
+              {% endif %}
+            </a>
+             
+            <div class="card-body ">
+              <h6 class="card-title card-productos">{{product.name}}</h6>
+             
+            </div>
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary"  id="id_quantity" name="quantity" min="1" value="1">Agregar al carrito</button>
+            </form>
+          </div>
+        </div>
+        
+        {% endfor %}
+      </div>
+
+      <div class="texto">
+        <h1>Venta de patitos</h1>
+    </div>
+
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/aguaa' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/rana' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/patoo' %}"  class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+    </section>
+
+    <header id="header">
+        <h1>Shopping patitos</h1> 
+        <img class="carrito" src="{% static 'images/carrito' %}" alt="carrito">
+    </header>
+    <div id="contenedor" class="contenedor">
+        <div>
+            <img src="{% static 'images/patiopintor.avif' %}" alt="producto 1">
+            <div class="informacion">
+                <p>Pato pintor</p>
+                <p class="precio">$199<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patoninja.avif' %}" alt="producto 2">
+            <div class="informacion">
+                <p>Pato ninja</p>                   
+                <p class="precio">$299<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patopeluquero.jpg' %}" alt="producto 3">
+            <div class="informacion">
+                <p>Pato peluquero</p>                   
+                <p class="precio">$399<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patopirata.avif' %}" alt="producto 4">
+            <div class="informacion">
+                <p>Pato pirata</p>                   
+                <p class="precio">$499<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patopolicia.avif' %}" alt="producto 5">
+            <div class="informacion">
+                <p>Pato Policia</p>                   
+                <p class="precio">$599<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patoviajero.avif' %}" alt="producto 6">
+            <div class="informacion">
+                <p>Pato explorador</p>                   
+                <p class="precio">$699<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patocomputador.avif' %}" alt="producto 7">
+            <div class="informacion">
+                <p>Pato informatico</p>                   
+                <p class="precio">$799<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patolimpiador.avif' %}" alt="Pato conserje">
+            <div class="informacion">
+                <p>Pato conserje</p>                   
+                <p class="precio">$899<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+        <div>
+            <img src="{% static 'images/patoauto.avif' %}" alt="producto 9">
+            <div class="informacion">
+                <p>Pato conductor</p>                   
+                <p class="precio">$999<span>.99</span></p>
+                <button>Comprar</button>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2 class="text-center">My Projects</h2>
+        <div class="row">
+            {% for proyecto in proyectos %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ proyecto.imagen.url }}" class="card-img-top" alt="{{ proyecto.titulo }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ proyecto.titulo }}</h5>
+                        <p class="card-text">{{ proyecto.descripcion }}</p>
+                        <a href="{{ proyecto.link_sitio }}" class="btn btn-primary" target="_blank">Web</a>
+                        <a href="{{ proyecto.link_repositorio }}" class="btn btn-secondary" target="_blank">Repositorio</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    <script src="app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+     
+     <script src="{% static 'js/script.js' %}"></script>
+
+    {% bootstrap_javascript %}
+</body>
+
+</html>

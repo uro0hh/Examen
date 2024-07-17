@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw Product List</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    
+
+    
+    <h1>Productos por Categoría</h1>
+    <ul>
+        {% for productos in productos %}
+            <h3>{{ productos.name }}</h3>
+            <img src="{{ productos.image.url }}" alt="">
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
